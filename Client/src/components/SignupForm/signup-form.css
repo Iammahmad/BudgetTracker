@@ -1,0 +1,15 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .submit {
+    width: fit-content;
+    padding: 5px 35px;
+    background-color: #ffb700;
+    border: none;
+    border-radius: 3px;
+    font-weight: bold;
+    margin-top: 12px;
+  }

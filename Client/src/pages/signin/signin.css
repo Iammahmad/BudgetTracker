@@ -1,0 +1,21 @@
+
+.login-content-wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #ffffff ;
+    gap: 10px;
+    width: 50vw;
+    height: 40vh;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px #bfbcbb;
+    overflow: auto;
+}
+@media screen and (max-width: 480px) {
+    .login-content-wrapper {
+      margin: 10px;
+      width: 90vw;
+    }
+  }
+  

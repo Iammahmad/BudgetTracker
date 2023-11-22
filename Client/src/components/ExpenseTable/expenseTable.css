@@ -1,0 +1,57 @@
+.exp-table{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #ffffff;
+    gap: 20px;
+    width: 50vw;
+    padding: 8px;
+    border-radius: 10px;
+    box-shadow: 0px 0px 2px 2px #bfbcbb;
+    overflow: auto;
+}
+
+.add-budget{
+    background: black;
+    color: white;
+}
+
+.table{
+    border: 1px solid black;
+}
+
+.row-page{
+    display: flex;
+    justify-content: end;
+}
+
+@media screen and (max-width: 480px) {
+    .exp-table {
+        margin: 10px;
+        width: 90vw;
+      }
+      
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  tbody tr {
+    border: 1px solid #000000;
+  }
+  
+  tbody td {
+    text-align: left;
+  }
+  
+  thead th {
+    border-top: none; /* Add this line */
+    text-align: left;
+  }
+  
+  
+  
+  

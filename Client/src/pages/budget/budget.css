@@ -1,0 +1,32 @@
+.b-body {
+    background-color: #e2e8f0;
+    display: flex;
+    height: 92vh;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 8vh;
+}
+.img{
+  height: 10vh;
+}
+.icon-wrapper{
+  display: flex;
+  align-items: center;
+
+}
+.profile-wrapper{
+  display: flex;
+  align-items: center;
+}
+
+.pro-img{
+  height: 6vh;
+  margin: 10px;
+}
+
