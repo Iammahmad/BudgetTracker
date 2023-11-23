@@ -15,9 +15,7 @@ const Budget = () => {
         const storedToken = localStorage.getItem('token');
         setToken(storedToken || '');
 
-        // Check authentication status
         if (!storedToken) {
-            // If not authenticated, navigate to the login page
             navigate('/signin');
         }
     }, [navigate]);
@@ -35,7 +33,6 @@ const Budget = () => {
                         <h4>Budget Tracker</h4>
                     </div>
                     <div className='profile-wrapper'>
-                        {/* You might want to replace this NavLink with a Logout button */}
                         <NavLink to="/signin">Sign Out</NavLink>
                         <img className='pro-img' src={userlogo} alt="" />
                     </div>

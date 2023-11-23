@@ -20,6 +20,8 @@ app.get('/getExpenses', authenticateToken, expenseController.getExpenses);
 app.post('/addExpense', authenticateToken, expenseController.addExpense);
 app.post('/deleteExpense', authenticateToken, expenseController.deleteExpense)
 app.put('/editExpense/:id', authenticateToken, expenseController.editExpense);
+app.get('/getChartData', authenticateToken, expenseController.getChartData )
+
 
 function authenticateToken(req, res, next) {
     const token = req.headers['authorization'];

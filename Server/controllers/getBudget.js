@@ -8,7 +8,7 @@ const checkBudget = async (req, res) => {
     try {
       const userId = req.user.id;
   
-      // Fetch user's budget limit
+
       const user = await UserModel.findById(userId);
   
       if (!user) {
@@ -17,7 +17,7 @@ const checkBudget = async (req, res) => {
   
       const budgetLimit = user.budgetLimit;
   
-      // Fetch total expenses for the user
+
       const expenses = await ExpenseModel.aggregate([
         {
           $match: { userId: mongoose.Types.ObjectId(userId) }
@@ -32,9 +32,7 @@ const checkBudget = async (req, res) => {
   
       const totalExpenses = expenses.length > 0 ? expenses[0].total : 0;
   
-      // Compare budget and total expenses
       if (totalExpenses > budgetLimit) {
-        // Send an alert or take appropriate action
         res.status(200).json({ alert: "Budget exceeded!" });
       } else {
         res.status(200).json({ alert: "Budget within limit." });

@@ -8,7 +8,7 @@ import { DatePicker } from '../DatePicker';
 interface AddExpenseProps {
   token: string;
   onClose: () => void;
-  onAddSuccess: () => void; // Add this prop
+  onAddSuccess: () => void;
 }
 
 export default function AddExpense({ token, onClose, onAddSuccess }: AddExpenseProps) {
@@ -38,7 +38,7 @@ export default function AddExpense({ token, onClose, onAddSuccess }: AddExpenseP
           }
         );
 
-        onAddSuccess(); // Call the onAddSuccess function
+        onAddSuccess(); 
         onClose();
       } catch (error) {
         console.error('Axios Error:', error);

@@ -13,13 +13,11 @@ async function getExpenses(req, res) {
             query.date = filterDate;
         }
 
-        // Query for paginated results
         const totalExpenses = await ExpenseModel.countDocuments(query);
         const expenses = await ExpenseModel.find(query)
             .skip((page - 1) * limit)
             .limit(limit);
 
-        // Query for total price for all data
         const totalPriceQuery = await ExpenseModel.aggregate([
             { $match: query },
             { $group: { _id: null, totalPrice: { $sum: "$price" } } }
@@ -137,10 +135,73 @@ async function editExpense(req, res) {
         });
     }
 }
+async function getChartData(req, res) {
+    const userId = req.user.userId;
+    const period = req.query.period;
+
+    try {
+        let matchQuery = { userId };
+
+
+        switch (period) {
+            case 'pastMonth':
+                matchQuery.date = {
+                    $gte: new Date(new Date().setMonth(new Date().getMonth() - 1)),
+                    $lte: new Date(),
+                };
+                break;
+            case 'past6Months':
+                matchQuery.date = {
+                    $gte: new Date(new Date().setMonth(new Date().getMonth() - 6)),
+                    $lte: new Date(),
+                };
+                break;
+            case 'pastYear':
+                matchQuery.date = {
+                    $gte: new Date(new Date().setFullYear(new Date().getFullYear() - 1)),
+                    $lte: new Date(),
+                };
+                break;
+            default:
+
+                break;
+        }
+
+
+        const chartData = await ExpenseModel.aggregate([
+            { $match: matchQuery },
+            {
+                $group: {
+                    _id: '$category',  
+                    totalAmount: { $sum: '$price' },
+                },
+            },
+        ]);
+
+        const chartLabels = chartData.map((item) => item._id);
+        const chartAmounts = chartData.map((item) => item.totalAmount);
+
+        res.json({
+            success: true,
+            message: 'Chart data retrieved successfully',
+            data: {
+                labels: chartLabels,
+                chartData: chartAmounts,
+            },
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Internal server error',
+            error: err.message,
+        });
+    }
+}
 
 module.exports = {
     getExpenses,
     addExpense,
     deleteExpense,
     editExpense,
+    getChartData,
 };

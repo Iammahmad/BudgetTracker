@@ -7,7 +7,7 @@ interface ExpenseDeleteButtonProps {
   expenseId: string;
   token: string;
   onDelete: () => void;
-  children: ReactNode; // Add this line to include the children prop
+  children: ReactNode;
 }
 
 const ExpenseDeleteButton: React.FC<ExpenseDeleteButtonProps> = ({ expenseId, token, onDelete, children }) => {

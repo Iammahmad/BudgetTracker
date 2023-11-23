@@ -23,5 +23,5 @@ export interface Expense {
   
 export interface ExpenseTableProps {
         token: string;
-        showAddOverlay: (show: boolean) => void; // Callback function to show/hide the Add Budget overlay
+        showAddOverlay: (show: boolean) => void;
       }
